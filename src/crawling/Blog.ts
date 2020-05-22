@@ -5,6 +5,7 @@ import moment from "moment";
 import {Emitter} from "../util/Emitter";
 export class Blog {
     private blogContents: Array<Object> = [];
+    public isLoad:boolean = false;
     constructor() {
         this.init()
     }
@@ -28,6 +29,7 @@ export class Blog {
                         this.blogContents.push(item)
                     }
                 });
+                this.isLoad = true;
                 Emitter.EVENT_EMITTER.emit("setBlogData", this.blogContents);
             })
             .catch(error=>{

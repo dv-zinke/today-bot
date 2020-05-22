@@ -1,11 +1,13 @@
 export interface Attachments {
-    pretext:string,
-    fields:[Field],
+    color?: string,
+    pretext?:string,
+    fields:Array<Field>,
     footer:string
 }
 
 export interface Field {
-    type:string,
+    type?:string,
     title:string,
-    value:string
+    value:any,
+    short?:boolean
 }

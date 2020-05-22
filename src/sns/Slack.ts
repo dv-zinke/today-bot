@@ -1,5 +1,8 @@
 import {Message} from "../interface/Message";
 import {Content} from "../interface/Content";
+import {Field} from "../interface/Attachments";
+import {PostData} from "../interface/PostData";
+import {Weather} from "../interface/Weather";
 
 export class Slack {
 
@@ -13,14 +16,34 @@ export class Slack {
 
     }
 
-    public getMessageData(data: [Content]):Message {
-        let markdown: string = "";
-        data.forEach(function (item) {
-            markdown += item.markdown + "\n"
-        });
+    public getMessageData(data: PostData):Message {
         this.message = {
             attachments: []
         };
+        if(!data.Blog || !data.Weather || !data.News) return this.message;
+
+        let markdown: string = "";
+
+        data.Blog.forEach(function (item) {
+            markdown += item.markdown + "\n"
+        });
+        this.message.attachments.push({
+            color:'#928BFF',
+            fields: [
+                this.getCurrentTemperature(data.Weather),
+                this.getWeather(data.Weather.weather),
+            ],
+            footer: "",
+            pretext: ""
+        });
+
+        this.message.attachments.push({
+            color:'#928BFF',
+            fields: [this.getNews(data.News)],
+            footer: "",
+            pretext: ""
+        });
+
         this.message.attachments.push({
             fields: [{
                 type: 'mrkdwn',
@@ -31,5 +54,32 @@ export class Slack {
             pretext: ""
         });
         return this.message;
+    }
+
+    private getNews(news:String):Field{
+        const newsSlackField:Field = {
+                type: 'mrkdwn',
+                title: '📰 뉴스 / 구글',
+                value: news,
+            };
+        return newsSlackField
+    }
+
+    private getCurrentTemperature(data:Weather):Field {
+        const weatherSlackField:Field = {
+            title: '🌡 현재 온도',
+            value: `${data.currentTemperature}\n 최저 / 최고\n${data.bodilyTemperature} `,
+            short: true,
+        };
+        return weatherSlackField
+    }
+
+    private getWeather(data:String):Field {
+        const weatherSlackField:Field = {
+            title: '🏞️ 현재 날씨',
+            value: data,
+            short: true,
+        };
+        return weatherSlackField
     }
 }
