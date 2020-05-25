@@ -7,6 +7,7 @@ import {Naver} from "./crawling/Naver";
 import {Google} from "./crawling/Google";
 import {PostData} from "./interface/PostData";
 import {Weather} from "./interface/Weather";
+import {Env} from "./util/Env";
 
 class Main {
     private blog: Blog | undefined;
@@ -58,9 +59,18 @@ class Main {
     }
 
     private slackPost(postData:PostData){
-        if(!this.slack) return;
-        const messageData = this.slack.getMessageData(postData);
-        axios.post("", messageData)
+
+        if(!Env.WEBHOOKS) throw new Error("웹훅 리스트가 없습니다.");
+        else {
+            if(!this.slack) return;
+            const messageData = this.slack.getMessageData(postData);
+            const webHookList = Env.WEBHOOKS.split(',');
+            webHookList.map(url=>{
+                axios.post(url, messageData)
+            })
+
+        }
+
 
     }
 }
