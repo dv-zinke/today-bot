@@ -65,6 +65,7 @@ class Main {
             if(!this.slack) return;
             const messageData = this.slack.getMessageData(postData);
             const webHookList = Env.WEBHOOKS.split(',');
+            console.log(webHookList)
             webHookList.map(url=>{
                 axios.post(url, messageData)
             })

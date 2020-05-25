@@ -11,6 +11,7 @@ var Emitter_1 = require("../util/Emitter");
 var Blog = /** @class */ (function () {
     function Blog() {
         this.blogContents = [];
+        this.isLoad = false;
         this.init();
     }
     Blog.prototype.init = function () {
@@ -32,6 +33,7 @@ var Blog = /** @class */ (function () {
                     _this.blogContents.push(item);
                 }
             });
+            _this.isLoad = true;
             Emitter_1.Emitter.EVENT_EMITTER.emit("setBlogData", _this.blogContents);
         })
             .catch(function (error) {
