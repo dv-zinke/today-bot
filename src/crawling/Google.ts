@@ -23,7 +23,7 @@ export class Google {
             let slackContent = '';
 
             for (let i = 0; i < 3; i++){
-                slackContent += `<${links[i]}|${titles[i]}>\n`;
+                slackContent +=  "*" + " " + `<${links[i]}|${titles[i]}>`;
             }
             this.isLoad = true;
             Emitter.EVENT_EMITTER.emit("setNewsData", slackContent);

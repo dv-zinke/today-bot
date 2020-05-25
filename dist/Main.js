@@ -9,7 +9,6 @@ var Slack_1 = require("./sns/Slack");
 var axios_1 = __importDefault(require("axios"));
 var Naver_1 = require("./crawling/Naver");
 var Google_1 = require("./crawling/Google");
-var Env_1 = require("./util/Env");
 var Main = /** @class */ (function () {
     function Main() {
         this.slackPostData = {};
@@ -58,17 +57,10 @@ var Main = /** @class */ (function () {
             return;
     };
     Main.prototype.slackPost = function (postData) {
-        if (!Env_1.Env.WEBHOOKS)
-            throw new Error("웹훅 리스트가 없습니다.");
-        else {
-            if (!this.slack)
-                return;
-            var messageData_1 = this.slack.getMessageData(postData);
-            var webHookList = Env_1.Env.WEBHOOKS.split(',');
-            webHookList.map(function (url) {
-                axios_1.default.post(url, messageData_1);
-            });
-        }
+        if (!this.slack)
+            return;
+        var messageData = this.slack.getMessageData(postData);
+        axios_1.default.post("https://hooks.slack.com/services/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", messageData);
     };
     return Main;
 }());
