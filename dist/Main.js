@@ -60,7 +60,7 @@ var Main = /** @class */ (function () {
         if (!this.slack)
             return;
         var messageData = this.slack.getMessageData(postData);
-        axios_1.default.post("https://hooks.slack.com/services/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", messageData);
+        axios_1.default.post("https://hooks.slack.com/services/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", messageData);
     };
     return Main;
 }());
