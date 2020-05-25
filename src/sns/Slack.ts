@@ -17,6 +17,7 @@ export class Slack {
     }
 
     public getMessageData(data: PostData):Message {
+        const today = new Date().toLocaleDateString().replace(/\. /g, '-').replace('.', '');
         this.message = {
             attachments: []
         };
@@ -28,17 +29,17 @@ export class Slack {
             markdown += item.markdown + "\n"
         });
         this.message.attachments.push({
+            pretext: `📨 ${today} 편지가 왔어요!`,
             color:'#928BFF',
             fields: [
                 this.getCurrentTemperature(data.Weather),
                 this.getWeather(data.Weather.weather),
             ],
             footer: "",
-            pretext: ""
         });
 
         this.message.attachments.push({
-            color:'#928BFF',
+            color:'#FFFFFF',
             fields: [this.getNews(data.News)],
             footer: "",
             pretext: ""
