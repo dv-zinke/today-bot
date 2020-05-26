@@ -19,7 +19,7 @@ export class Google {
          * TODO 링크 안됨
          */
         axios.get(url).then(response =>{
-            const $ = cheerio.load(response.data);
+            const $ = cheerio.load(response.data, { xmlMode: true });
             const titles: string[] = $('item > title').map((i, element) => $(element).text()).get();
             const links: string[] = $('item > link').map((i, element) => $(element).text()).get();
             let slackContent = '';
