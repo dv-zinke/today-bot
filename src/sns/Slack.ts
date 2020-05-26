@@ -46,9 +46,10 @@ export class Slack {
         });
 
         this.message.attachments.push({
+            color:'#E6FD37',
             fields: [{
                 type: 'mrkdwn',
-                title: '',
+                title: '💻 개발 블로그',
                 value: markdown,
             },],
             footer: "",
