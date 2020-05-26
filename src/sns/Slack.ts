@@ -38,12 +38,7 @@ export class Slack {
             footer: "",
         });
 
-        this.message.attachments.push({
-            color:'#FFFFFF',
-            fields: [this.getNews(data.News)],
-            footer: "",
-            pretext: ""
-        });
+
 
         this.message.attachments.push({
             fields: [{
@@ -51,6 +46,13 @@ export class Slack {
                 title: '',
                 value: markdown,
             },],
+            footer: "",
+            pretext: ""
+        });
+
+        this.message.attachments.push({
+            color:'#FFFFFF',
+            fields: [this.getNews(data.News)],
             footer: "",
             pretext: ""
         });

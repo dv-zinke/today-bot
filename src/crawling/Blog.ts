@@ -15,6 +15,9 @@ export class Blog {
     }
 
     private setBlogData() {
+        /**
+         * TODO 마지막링크이상함
+         */
         const baseURL = `${config.base_url}?sort=${config.sort}&page=${config.page}&size=${config.size}&tags=${encodeURI(config.tags.join(","))}`;
         const yesterday = moment().subtract(1, 'day');
         axios.get(baseURL)
