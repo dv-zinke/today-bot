@@ -1,7 +1,7 @@
 import axios from 'axios';
 import cheerio from 'cheerio';
 import {Emitter} from "../util/Emitter";
-
+import config from '../config.json';
 export class Google {
     public isLoad:Boolean = false;
 
@@ -14,10 +14,8 @@ export class Google {
     }
 
     private getNews(){
-        const url = "https://news.google.com/rss?hl=ko&gl=KR&ceid=KR:ko";
-        /**
-         * TODO 링크 안됨
-         */
+        const url = config.google_url;
+
         axios.get(url).then(response =>{
             const $ = cheerio.load(response.data, { xmlMode: true });
             const titles: string[] = $('item > title').map((i, element) => $(element).text()).get();

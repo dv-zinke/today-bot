@@ -2,6 +2,7 @@ import axios from 'axios';
 import cheerio from 'cheerio';
 import {Emitter} from "../util/Emitter";
 import {Weather} from "../interface/Weather";
+import config from '../config.json';
 export class Naver {
     public isLoad:Boolean = false;
     constructor(){
@@ -13,7 +14,7 @@ export class Naver {
     }
 
     private getWeather(){
-        const url = "https://search.naver.com/search.naver?sm=tab_hty.top&where=nexearch&query=%EB%B6%80%EC%82%B0+%ED%95%B4%EC%9A%B4%EB%8C%80%EA%B5%AC+%EB%82%A0%EC%94%A8&oquery=%EB%B6%80%EC%82%B0%EB%82%A0%EC%94%A8&tqi=UViL5sprvTVssPw9phGssssssNo-279479";
+        const url = config.naver_url;
 
         axios.get(url).then(response =>{
             const $ = cheerio.load(response.data);

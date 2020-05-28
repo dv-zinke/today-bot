@@ -1,4 +1,6 @@
 {
+  "naver_url": "https://search.naver.com/search.naver?sm=tab_hty.top&where=nexearch&query=%EB%B6%80%EC%82%B0+%ED%95%B4%EC%9A%B4%EB%8C%80%EA%B5%AC+%EB%82%A0%EC%94%A8&oquery=%EB%B6%80%EC%82%B0%EB%82%A0%EC%94%A8&tqi=UViL5sprvTVssPw9phGssssssNo-279479",
+  "google_url": "https://news.google.com/rss?hl=ko&gl=KR&ceid=KR:ko",
   "base_url": "https://awesome-devblog.now.sh/api/korean/people/feeds",
   "sort": "date.desc",
   "page": "1",
