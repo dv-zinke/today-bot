@@ -12,6 +12,6 @@ Github Action 으로 만든 슬랙에 매일 아침 9시에 개발 블로그, �
 - 매일 아침 9시 새로운 블로그글들이 슬랙으로 전송됩니다. 🎉
 
 ###레퍼런스
-[https://github.com/cjaewon/letterbot](https://github.com/cjaewon/letterbot)
-[https://github.com/techinpark/today-devblog-bot](https://github.com/techinpark/today-devblog-bot)
-[https://github.com/sarojaba/awesome-devblog](https://github.com/sarojaba/awesome-devblog)
+- [https://github.com/cjaewon/letterbot](https://github.com/cjaewon/letterbot)
+- [https://github.com/techinpark/today-devblog-bot](https://github.com/techinpark/today-devblog-bot)
+- [https://github.com/sarojaba/awesome-devblog](https://github.com/sarojaba/awesome-devblog)
